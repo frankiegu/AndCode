@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface ProjectImgService extends BaseService<ProjectImageEntity> {
 
-
     BaseResult addProjectImg(String userId, String projectId, String title, String content, Integer index, MultipartFile imgFile);
 
     BaseResult updateProjectImg(String userId, String imgId, String projectId, String title, String content, Integer index, MultipartFile imgFile);
