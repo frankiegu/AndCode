@@ -2,6 +2,7 @@ package me.zhouzhuo810.andcode.common.service;
 
 import me.zhouzhuo810.andcode.common.dao.BaseDao;
 import me.zhouzhuo810.andcode.common.entity.BaseEntity;
+import me.zhouzhuo810.andcode.common.result.BaseResult;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 

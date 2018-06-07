@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
+ * 项目分类
  * Created by zz on 2018/5/29.
  */
 @Entity(name = "projectType")

@@ -12,8 +12,10 @@ import javax.persistence.Entity;
 public class UserEntity extends BaseEntity {
     @Column(name = "phone")
     private String phone;
-    @Column(name = "passowrd")
-    private String passowrd;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "name")
+    private String name;
     @Column(name = "email")
     private String email;
 
@@ -25,12 +27,20 @@ public class UserEntity extends BaseEntity {
         this.phone = phone;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+    public String getName() {
+        return name;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

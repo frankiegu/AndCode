@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
+ * 项目
  * Created by zz on 2018/5/29.
  */
 @Entity(name = "project")
@@ -22,18 +23,12 @@ public class ProjectEntity extends BaseEntity {
     private String developTools;
     @Column(name = "Price")
     private String price;
+    @Column(name = "apkPath")
+    private String apkPath;
     @Column(name = "Note")
     private String note;
     @Formula("(SELECT t.TypeName FROM projectType t WHERE t.ID = projectTypeId)")
-    private String fileTypeName;
-
-    public String getFileTypeName() {
-        return fileTypeName;
-    }
-
-    public void setFileTypeName(String fileTypeName) {
-        this.fileTypeName = fileTypeName;
-    }
+    private String projectTypeName;
 
     public String getProjectName() {
         return projectName;
@@ -75,11 +70,27 @@ public class ProjectEntity extends BaseEntity {
         this.price = price;
     }
 
+    public String getApkPath() {
+        return apkPath;
+    }
+
+    public void setApkPath(String apkPath) {
+        this.apkPath = apkPath;
+    }
+
     public String getNote() {
         return note;
     }
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getProjectTypeName() {
+        return projectTypeName;
+    }
+
+    public void setProjectTypeName(String projectTypeName) {
+        this.projectTypeName = projectTypeName;
     }
 }

@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
+ * demo 截图
  * Created by zz on 2018/6/5.
  */
 @Entity(name = "project_image")
