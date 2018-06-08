@@ -28,10 +28,10 @@ import java.util.Map;
  */
 @Service
 public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> implements ProjectTypeService {
-    
+
     @Resource(name = "userServiceImpl")
     private UserService mUserService;
-    
+
     @Override
     @Resource(name = "projectTypeDapImpl")
     public void setBaseDao(BaseDao<ProjectTypeEntity> baseDao) {
@@ -43,13 +43,14 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
     }
 
     @Override
-    public BaseResult addProjectType(String userId, String typeName) {
+    public BaseResult addProjectType(String userId, String typeName, String groupId) {
         UserEntity user = mUserService.get(userId);
         if (user == null) {
             return new BaseResult(0, "用户不合法！");
         }
         ProjectTypeEntity entity = new ProjectTypeEntity();
         entity.setTypeName(typeName);
+        entity.setGroupId(groupId);
         entity.setCreateUserID(user.getId());
         entity.setCreateUserName(user.getName());
         try {
@@ -85,7 +86,7 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
     }
 
     @Override
-    public BaseResult updateProjectType(String userId, String typeId, String typeName) {
+    public BaseResult updateProjectType(String userId, String typeId, String typeName, String groupId) {
         UserEntity user = mUserService.get(userId);
         if (user == null) {
             return new BaseResult(0, "用户不合法！");
@@ -97,6 +98,9 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
         if (typeName != null) {
             entity.setTypeName(typeName);
         }
+        if (groupId != null) {
+            entity.setGroupId(groupId);
+        }
         entity.setModifyUserID(user.getId());
         entity.setModifyUserName(user.getName());
         entity.setModifyTime(new Date());
@@ -107,7 +111,7 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
             e.printStackTrace();
             return new BaseResult(0, "更新失败！");
         }
-        
+
     }
 
     @Override

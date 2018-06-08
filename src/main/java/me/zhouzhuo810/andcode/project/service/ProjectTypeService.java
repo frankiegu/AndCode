@@ -9,11 +9,11 @@ import me.zhouzhuo810.andcode.project.entity.ProjectTypeEntity;
  */
 public interface ProjectTypeService  extends BaseService<ProjectTypeEntity> {
 
-    BaseResult addProjectType(String userId, String typeName);
+    BaseResult addProjectType(String userId, String typeName, String groupId);
 
     BaseResult deleteProjectType(String userId, String id);
 
-    BaseResult updateProjectType(String userId, String typeId, String typeName);
+    BaseResult updateProjectType(String userId, String typeId, String typeName, String groupId);
 
     BaseResult getAllProjectType();
 
