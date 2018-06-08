@@ -35,9 +35,10 @@ public class ProjectTypeAction extends BaseController<ProjectTypeEntity> {
     @RequestMapping(value = "/addProjectType", method = RequestMethod.POST)
     public BaseResult addProjectType(
             @RequestParam(value = "userId") String userId,
-            @RequestParam(value = "typeName") String typeName
+            @RequestParam(value = "typeName") String typeName,
+            @RequestParam(value = "groupId") String groupId
     ) {
-        return getBaseService().addProjectType(userId, typeName);
+        return getBaseService().addProjectType(userId, typeName, groupId);
     }
 
     @ResponseBody
@@ -45,10 +46,11 @@ public class ProjectTypeAction extends BaseController<ProjectTypeEntity> {
     public BaseResult updateProjectType(
             @RequestParam(value = "userId") String userId,
             @RequestParam(value = "typeId") String typeId,
-            @RequestParam(value = "typeName") String typeName
+            @RequestParam(value = "typeName", required = false) String typeName,
+            @RequestParam(value = "groupId", required = false) String groupId
     ) {
 
-        return getBaseService().updateProjectType(userId, typeId, typeName);
+        return getBaseService().updateProjectType(userId, typeId, typeName, groupId);
     }
 
 
