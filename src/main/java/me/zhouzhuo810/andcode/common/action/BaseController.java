@@ -54,7 +54,7 @@ public abstract class BaseController<E extends BaseEntity> {
         String moduleName = "";
         if (rm != null) {
             String[] values = rm.value();
-            if (ArrayUtils.isNotEmpty(values)) {
+            if (!ArrayUtils.isEmpty(values)) {
                 moduleName = values[0];
             }
         }

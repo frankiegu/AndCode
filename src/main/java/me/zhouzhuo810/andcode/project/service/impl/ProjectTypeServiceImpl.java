@@ -33,7 +33,7 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
     private UserService mUserService;
 
     @Override
-    @Resource(name = "projectTypeDapImpl")
+    @Resource(name = "projectTypeDaoImpl")
     public void setBaseDao(BaseDao<ProjectTypeEntity> baseDao) {
         this.baseDao = baseDao;
     }

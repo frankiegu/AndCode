@@ -35,10 +35,10 @@ public class ProjectImgAction extends BaseController<ProjectImageEntity> {
             @RequestParam(value = "projectId") String projectId,
             @RequestParam(value = "title") String title,
             @RequestParam(value = "content") String content,
-            @RequestParam(value = "index") Integer index,
+            @RequestParam(value = "position") Integer position,
             @RequestBody(required = false) MultipartFile imgFile
     ) {
-        return getBaseService().addProjectImg(userId, projectId, title, content, index, imgFile);
+        return getBaseService().addProjectImg(userId, projectId, title, content, position, imgFile);
     }
 
     @ResponseBody
@@ -49,10 +49,10 @@ public class ProjectImgAction extends BaseController<ProjectImageEntity> {
             @RequestParam(value = "projectId", required = false) String projectId,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "content", required = false) String content,
-            @RequestParam(value = "index", required = false) Integer index,
+            @RequestParam(value = "position", required = false) Integer position,
             @RequestBody(required = false) MultipartFile imgFile
     ) {
-        return getBaseService().updateProjectImg(userId, imgId, projectId, title, content, index, imgFile);
+        return getBaseService().updateProjectImg(userId, imgId, projectId, title, content, position, imgFile);
     }
 
     @ResponseBody

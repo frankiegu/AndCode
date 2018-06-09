@@ -21,8 +21,8 @@ public class ProjectImageEntity extends BaseEntity {
     private String title;
     @Column(name = "Content")
     private String content;
-    @Column(name = "Index")
-    private Integer index; //排序用
+    @Column(name = "Position")
+    private Integer position; //排序用
 
     public String getImgPath() {
         return imgPath;
@@ -64,11 +64,11 @@ public class ProjectImageEntity extends BaseEntity {
         this.content = content;
     }
 
-    public Integer getIndex() {
-        return index;
+    public Integer getPosition() {
+        return position;
     }
 
-    public void setIndex(Integer index) {
-        this.index = index;
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 }

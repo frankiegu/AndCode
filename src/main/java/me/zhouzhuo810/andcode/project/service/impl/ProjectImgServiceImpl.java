@@ -49,7 +49,7 @@ public class ProjectImgServiceImpl extends BaseServiceImpl<ProjectImageEntity> i
     }
 
     @Override
-    public BaseResult addProjectImg(String userId, String projectId, String title, String content, Integer index, MultipartFile imgFile) {
+    public BaseResult addProjectImg(String userId, String projectId, String title, String content, Integer position, MultipartFile imgFile) {
         UserEntity user = mUserService.get(userId);
         if (user == null) {
             return new BaseResult(0, "用户不合法！");
@@ -64,12 +64,12 @@ public class ProjectImgServiceImpl extends BaseServiceImpl<ProjectImageEntity> i
         if (content != null) {
             entity.setContent(content);
         }
-        if (index != null) {
-            entity.setIndex(index);
+        if (position != null) {
+            entity.setPosition(position);
         }
         if (imgFile != null) {
             try {
-                String path = FileUtils.saveFile(imgFile.getBytes(), "apk", imgFile.getOriginalFilename());
+                String path = FileUtils.saveFile(imgFile.getBytes(), "img", imgFile.getOriginalFilename());
                 entity.setImgPath(path);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -87,7 +87,7 @@ public class ProjectImgServiceImpl extends BaseServiceImpl<ProjectImageEntity> i
     }
 
     @Override
-    public BaseResult updateProjectImg(String userId, String imgId, String projectId, String title, String content, Integer index, MultipartFile imgFile) {
+    public BaseResult updateProjectImg(String userId, String imgId, String projectId, String title, String content, Integer position, MultipartFile imgFile) {
         UserEntity user = mUserService.get(userId);
         if (user == null) {
             return new BaseResult(0, "用户不合法！");
@@ -105,8 +105,8 @@ public class ProjectImgServiceImpl extends BaseServiceImpl<ProjectImageEntity> i
         if (content != null) {
             entity.setContent(content);
         }
-        if (index != null) {
-            entity.setIndex(index);
+        if (position != null) {
+            entity.setPosition(position);
         }
         if (imgFile != null) {
             try {
@@ -167,7 +167,7 @@ public class ProjectImgServiceImpl extends BaseServiceImpl<ProjectImageEntity> i
                 map.put("imgSize", action.getImgSize());
                 map.put("title", action.getTitle());
                 map.put("content", action.getContent());
-                map.put("index", action.getIndex());
+                map.put("position", action.getPosition());
                 map.put("projectId", action.getProjectId());
                 map.put("createTime", DataUtils.formatDate(action.getCreateTime()));
                 map.put("createPerson", action.getCreateUserName());

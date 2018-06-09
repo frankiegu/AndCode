@@ -6,8 +6,10 @@ import me.zhouzhuo810.andcode.common.result.BaseResult;
 import me.zhouzhuo810.andcode.common.service.impl.BaseServiceImpl;
 import me.zhouzhuo810.andcode.common.utils.MapUtils;
 import me.zhouzhuo810.andcode.project.dao.ProjectTypeGroupDao;
+import me.zhouzhuo810.andcode.project.entity.ProjectTypeEntity;
 import me.zhouzhuo810.andcode.project.entity.ProjectTypeGroupEntity;
 import me.zhouzhuo810.andcode.project.service.ProjectTypeGroupService;
+import me.zhouzhuo810.andcode.project.service.ProjectTypeService;
 import me.zhouzhuo810.andcode.user.entity.UserEntity;
 import me.zhouzhuo810.andcode.user.service.UserService;
 import org.hibernate.criterion.Criterion;
@@ -27,7 +29,7 @@ public class ProjectTypeGroupServiceImpl extends BaseServiceImpl<ProjectTypeGrou
     @Resource(name = "userServiceImpl")
     private UserService mUserService;
     @Resource(name = "projectTypeServiceImpl")
-    private UserService mProjectTypeService;
+    private ProjectTypeService mProjectTypeService;
 
     @Override
     @Resource(name = "projectTypeGroupDaoImpl")
@@ -131,15 +133,15 @@ public class ProjectTypeGroupServiceImpl extends BaseServiceImpl<ProjectTypeGrou
                 groupMap.put("groupId", cPid);
                 groupMap.put("groupName", groupName);
                 groupMap.put("pid", pid);
-                List<UserEntity> types = mProjectTypeService.executeCriteria(new Criterion[]{
+                List<ProjectTypeEntity> types = mProjectTypeService.executeCriteria(new Criterion[]{
                         Restrictions.eq("deleteFlag", BaseEntity.DELETE_FLAG_NO),
                         Restrictions.eq("groupId", cPid)
                 }, Order.asc("createTime"));
                 if (types != null) {
                     List<Map<String, Object>> typeList = new ArrayList<>();
-                    for (UserEntity type : types) {
+                    for (ProjectTypeEntity type : types) {
                         MapUtils mapType = new MapUtils();
-                        mapType.put("typeName", type.getName());
+                        mapType.put("typeName", type.getTypeName());
                         mapType.put("typeId", type.getId());
                         typeList.add(mapType.build());
                     }
@@ -168,15 +170,15 @@ public class ProjectTypeGroupServiceImpl extends BaseServiceImpl<ProjectTypeGrou
                 groupMap.put("groupId", cPid);
                 groupMap.put("groupName", groupName);
                 groupMap.put("pid", pid);
-                List<UserEntity> types = mProjectTypeService.executeCriteria(new Criterion[]{
+                List<ProjectTypeEntity> types = mProjectTypeService.executeCriteria(new Criterion[]{
                         Restrictions.eq("deleteFlag", BaseEntity.DELETE_FLAG_NO),
                         Restrictions.eq("groupId", cPid)
                 }, Order.asc("createTime"));
                 if (types != null) {
                     List<Map<String, Object>> typeList = new ArrayList<>();
-                    for (UserEntity type : types) {
+                    for (ProjectTypeEntity type : types) {
                         MapUtils mapType = new MapUtils();
-                        mapType.put("typeName", type.getName());
+                        mapType.put("typeName", type.getTypeName());
                         mapType.put("typeId", type.getId());
                         typeList.add(mapType.build());
                     }

@@ -42,10 +42,25 @@ public class UserServiceImpl extends BaseServiceImpl<UserEntity> implements User
             mapUtils.put("userId", userEntity.getId());
             mapUtils.put("name", userEntity.getName());
             mapUtils.put("phone", userEntity.getPhone());
-            mapUtils.put("password", userEntity.getPassword());
             mapUtils.put("email", userEntity.getEmail());
-            return new BaseResult(0, "用户名或密码错误！", mapUtils.build());
+            return new BaseResult(1, "用户名或密码错误！", mapUtils.build());
         }
         return new BaseResult(0, "用户名或密码错误！", new HashMap<String, String>());
+    }
+
+    @Override
+    public BaseResult userRegister(String phone, String password, String name, String email) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setPhone(phone);
+        userEntity.setPassword(password);
+        userEntity.setEmail(email);
+        userEntity.setName(name);
+        try {
+            save(userEntity);
+            return new BaseResult(1, "注册成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new BaseResult(0, "注册失败！");
     }
 }

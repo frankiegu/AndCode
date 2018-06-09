@@ -11,4 +11,6 @@ public interface UserService extends BaseService<UserEntity> {
 
     BaseResult userLogin(String phone, String password);
 
+    BaseResult userRegister(String phone, String password, String name, String email);
+
 }

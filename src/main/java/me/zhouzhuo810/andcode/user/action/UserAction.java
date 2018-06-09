@@ -40,4 +40,16 @@ public class UserAction extends BaseController<UserEntity> {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/userRegister", method = RequestMethod.POST)
+    public BaseResult userRegister(
+            @RequestParam(value = "phone") String phone,
+            @RequestParam(value = "password") String password,
+            @RequestParam(value = "name") String name,
+            @RequestParam(value = "email", required = false) String email
+    ) {
+        return getBaseService().userRegister(phone, password, name, email);
+    }
+
+
 }
