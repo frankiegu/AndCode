@@ -115,9 +115,10 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
     }
 
     @Override
-    public BaseResult getAllProjectType() {
+    public BaseResult getAllProjectType(String groupId) {
         List<ProjectTypeEntity> actions = executeCriteria(new Criterion[]{
-                Restrictions.eq("deleteFlag", BaseEntity.DELETE_FLAG_NO)
+                Restrictions.eq("deleteFlag", BaseEntity.DELETE_FLAG_NO),
+                Restrictions.eq("groupId", groupId)
         }, Order.asc("createTime"));
         if (actions != null && actions.size() > 0) {
             List<Map<String, Object>> result = new ArrayList<>();
@@ -125,6 +126,7 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
                 MapUtils map = new MapUtils();
                 map.put("id", action.getId());
                 map.put("typeName", action.getTypeName());
+                map.put("groupId", action.getGroupId());
                 map.put("createTime", DataUtils.formatDate(action.getCreateTime()));
                 map.put("createPerson", action.getCreateUserName());
                 result.add(map.build());

@@ -45,7 +45,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserEntity> implements User
             mapUtils.put("email", userEntity.getEmail());
             return new BaseResult(1, "用户名或密码错误！", mapUtils.build());
         }
-        return new BaseResult(0, "用户名或密码错误！", new HashMap<String, String>());
+        return new BaseResult(0, "登录成功！", new HashMap<String, String>());
     }
 
     @Override

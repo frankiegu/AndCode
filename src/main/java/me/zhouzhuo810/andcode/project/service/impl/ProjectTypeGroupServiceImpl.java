@@ -155,6 +155,25 @@ public class ProjectTypeGroupServiceImpl extends BaseServiceImpl<ProjectTypeGrou
         return new BaseResult(1, "ok", result);
     }
 
+    @Override
+    public BaseResult getAllProjectTypeGroupOnly(String pid) {
+        List<ProjectTypeGroupEntity> groups = executeCriteria(new Criterion[]{
+                Restrictions.eq("deleteFlag", BaseEntity.DELETE_FLAG_NO),
+                Restrictions.eq("pid", pid)
+        }, Order.asc("createTime"));
+        List<Map<String, Object>> result = new ArrayList<>();
+        if (groups != null) {
+            for (ProjectTypeGroupEntity group : groups) {
+                MapUtils groupMap = new MapUtils();
+                groupMap.put("groupId", group.getId());
+                groupMap.put("groupName", group.getGroupName());
+                groupMap.put("pid", group.getPid());
+                result.add(groupMap.build());
+            }
+        }
+        return new BaseResult(1, "ok", result);
+    }
+
     private List<Map<String, Object>> getChlidProjectGroupAndType(String pid, List<Map<String, Object>> result) {
         List<ProjectTypeGroupEntity> groups = executeCriteria(new Criterion[]{
                 Restrictions.eq("deleteFlag", BaseEntity.DELETE_FLAG_NO),

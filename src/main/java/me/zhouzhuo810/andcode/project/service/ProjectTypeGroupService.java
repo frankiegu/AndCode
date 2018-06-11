@@ -17,4 +17,6 @@ public interface ProjectTypeGroupService extends BaseService<ProjectTypeGroupEnt
                                       String groupName, String pid);
 
     BaseResult getAllProjectTypeGroup(String pid);
+
+    BaseResult getAllProjectTypeGroupOnly(String pid);
 }

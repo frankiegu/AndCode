@@ -15,6 +15,6 @@ public interface ProjectTypeService  extends BaseService<ProjectTypeEntity> {
 
     BaseResult updateProjectType(String userId, String typeId, String typeName, String groupId);
 
-    BaseResult getAllProjectType();
+    BaseResult getAllProjectType(String groupId);
 
 }

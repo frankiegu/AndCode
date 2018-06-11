@@ -66,8 +66,9 @@ public class ProjectTypeAction extends BaseController<ProjectTypeEntity> {
     @ResponseBody
     @RequestMapping(value = "/getAllProjectType", method = RequestMethod.GET)
     public BaseResult getAllProjectType(
+            @RequestParam(value = "groupId") String groupId
     ) {
-        return getBaseService().getAllProjectType();
+        return getBaseService().getAllProjectType(groupId);
     }
 
 

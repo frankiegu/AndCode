@@ -69,5 +69,13 @@ public class ProjectTypeGroupAction extends BaseController<ProjectTypeGroupEntit
         return getBaseService().getAllProjectTypeGroup(pid);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/getAllProjectTypeGroupOnly", method = RequestMethod.GET)
+    public BaseResult getAllProjectTypeGroupOnly(
+            @RequestParam(value = "pid") String pid
+    ) {
+        return getBaseService().getAllProjectTypeGroupOnly(pid);
+    }
+
 
 }
