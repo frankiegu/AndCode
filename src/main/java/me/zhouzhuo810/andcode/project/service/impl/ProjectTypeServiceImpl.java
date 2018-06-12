@@ -124,7 +124,7 @@ public class ProjectTypeServiceImpl extends BaseServiceImpl<ProjectTypeEntity> i
             List<Map<String, Object>> result = new ArrayList<>();
             for (ProjectTypeEntity action : actions) {
                 MapUtils map = new MapUtils();
-                map.put("id", action.getId());
+                map.put("typeId", action.getId());
                 map.put("typeName", action.getTypeName());
                 map.put("groupId", action.getGroupId());
                 map.put("createTime", DataUtils.formatDate(action.getCreateTime()));

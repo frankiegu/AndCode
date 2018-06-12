@@ -20,6 +20,11 @@
     <mvc:resources location="/apk/" mapping="/apk/**"/>
     <mvc:resources location="/img/" mapping="/img/**"/>
     <mvc:resources location="/video/" mapping="/video/**"/>
+    <mvc:resources location="/partials/" mapping="/partials/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/scss/" mapping="/scss/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/fonts/" mapping="/fonts/**"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/"/>
