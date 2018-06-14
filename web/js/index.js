@@ -49,7 +49,6 @@ function getChilds(data) {
 }
 
 function getProjectList(typeId) {
-    alert("typeId"+typeId);
     $.get("/AndCode/v1/project/getAllProjectByType?typeId="+typeId,
         function (data, status) {
             if (status === 'success') {
@@ -67,17 +66,19 @@ function getProjectList(typeId) {
 
 function getProjectItem(data) {
     var c = "";
-    c += '<div class="col-sm-6 col-md-4">' +
-        '<div class="thumbnail">' +
-        '<a class="lightbox"href="images/park.jpg">' +
-        '<img src="images/park.jpg"alt="Park">' +
-        '</a>' +
-        '<div class="caption">' +
-        '<h3>'+data.projectName+'</h3>' +
-        '<h4>'+data.price+'</h4>' +
-        '<p>'+data.note+'</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>';
+    $.each(data.imgs, function (n, value) {
+        c += '<div class="col-sm-6 col-md-4">' +
+            '<div class="thumbnail">' +
+            '<a class="lightbox" href="'+value.imgPath+'">' +
+            '<img src="'+value.imgPath+'"alt="'+value.title+'">' +
+            '</a>' +
+            '<div class="caption">' +
+            '<h3>'+value.title+'</h3>' +
+            '<h4>'+value.content+'</h4>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+    });
     return c;
+
 }

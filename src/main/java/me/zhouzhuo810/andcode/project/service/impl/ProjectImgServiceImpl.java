@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -70,7 +71,7 @@ public class ProjectImgServiceImpl extends BaseServiceImpl<ProjectImageEntity> i
         if (imgFile != null) {
             try {
                 String path = FileUtils.saveFile(imgFile.getBytes(), "img", imgFile.getOriginalFilename());
-                entity.setImgPath(path);
+                entity.setImgPath("img"+ File.separator+imgFile.getOriginalFilename());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -110,8 +111,8 @@ public class ProjectImgServiceImpl extends BaseServiceImpl<ProjectImageEntity> i
         }
         if (imgFile != null) {
             try {
-                String path = FileUtils.saveFile(imgFile.getBytes(), "apk", imgFile.getOriginalFilename());
-                entity.setImgPath(path);
+                String path = FileUtils.saveFile(imgFile.getBytes(), "img", imgFile.getOriginalFilename());
+                entity.setImgPath("img"+File.separator+imgFile.getOriginalFilename());
             } catch (IOException e) {
                 e.printStackTrace();
             }

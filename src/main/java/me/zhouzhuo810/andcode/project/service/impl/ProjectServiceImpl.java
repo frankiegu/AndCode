@@ -9,6 +9,8 @@ import me.zhouzhuo810.andcode.common.utils.FileUtils;
 import me.zhouzhuo810.andcode.common.utils.MapUtils;
 import me.zhouzhuo810.andcode.project.dao.ProjectDao;
 import me.zhouzhuo810.andcode.project.entity.ProjectEntity;
+import me.zhouzhuo810.andcode.project.entity.ProjectImageEntity;
+import me.zhouzhuo810.andcode.project.service.ProjectImgService;
 import me.zhouzhuo810.andcode.project.service.ProjectService;
 import me.zhouzhuo810.andcode.user.entity.UserEntity;
 import me.zhouzhuo810.andcode.user.service.UserService;
@@ -34,6 +36,8 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
 
     @Resource(name = "userServiceImpl")
     private UserService mUserService;
+    @Resource(name = "projectImgServiceImpl")
+    private ProjectImgService mProjectImgService;
 
     @Override
     @Resource(name = "projectDaoImpl")
@@ -183,6 +187,10 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
             if (actions != null && actions.size() > 0) {
                 List<Map<String, Object>> result = new ArrayList<>();
                 for (ProjectEntity action : actions) {
+                    List<ProjectImageEntity> imgs = mProjectImgService.executeCriteria(new Criterion[]{
+                            Restrictions.eq("deleteFlag", BaseEntity.DELETE_FLAG_NO),
+                            Restrictions.eq("projectId", action.getId())
+                    }, Order.asc("createTime"));
                     MapUtils map = new MapUtils();
                     map.put("id", action.getId());
                     map.put("apkPath", action.getApkPath());
@@ -195,6 +203,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
                     map.put("projectSize", action.getProjectSize());
                     map.put("price", action.getPrice());
                     map.put("projectTypeId", action.getProjectTypeId());
+                    map.put("imgs", imgs);
                     result.add(map.build());
                 }
                 return new BaseResult(1, "ok", result);
