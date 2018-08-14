@@ -25,13 +25,8 @@
 <body>
 
 <div class="container-fluid">
+    
     <div class="row">
-        <div class="col-md-3" id="left-container">
-            <ul class="cd-accordion-menu animated" id="group-menu">
-                <%--这里填分组菜单--%>
-
-            </ul> <!-- cd-accordion-menu -->
-        </div>
         <div class="col-md-9" id="right-container">
             <div class="tz-gallery">
                 <div class="row" id="img-box">
@@ -39,6 +34,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3" id="left-container">
+            <ul class="cd-accordion-menu animated" id="group-menu">
+                <%--这里填分组菜单--%>
+
+            </ul> <!-- cd-accordion-menu -->
+        </div>
+
     </div>
 </div>
 

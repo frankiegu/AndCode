@@ -68,14 +68,12 @@ function getProjectItem(data) {
     var c = "";
     $.each(data.imgs, function (n, value) {
         c += '<div class="col-sm-6 col-md-4">' +
+            '<h3>'+value.title+"-"+value.content+'</h3>' +
+            '<p>'+"（一口价:"+data.price+")"+'<a href="https://zhouzhuo810.taobao.com" target="_blank"> 下单请点击这里>> </a></p>' +
             '<div class="thumbnail">' +
             '<a class="lightbox" href="'+value.imgPath+'">' +
             '<img src="'+value.imgPath+'"alt="'+value.title+'">' +
             '</a>' +
-            '<div class="caption">' +
-            '<h3>'+value.title+'</h3>' +
-            '<h4>'+value.content+'</h4>' +
-            '</div>' +
             '</div>' +
             '</div>';
     });
