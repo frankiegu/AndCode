@@ -37,12 +37,13 @@ public class ProjectAction extends BaseController<ProjectEntity> {
             @RequestParam(value = "projectTypeId") String projectTypeId,
             @RequestParam(value = "developTools", required = false) String developTools,
             @RequestParam(value = "price") String price,
+            @RequestParam(value = "codePath", required = false) String codePath,
             @RequestBody(required = false) MultipartFile apkFile,
             @RequestParam(value = "note", required = false) String note
     ) {
 
         return getBaseService().addProject(userId, projectName, projectSize,
-                projectTypeId, developTools, price, apkFile, note);
+                projectTypeId, developTools, price, apkFile, note, codePath);
     }
 
     @ResponseBody
@@ -65,12 +66,13 @@ public class ProjectAction extends BaseController<ProjectEntity> {
             @RequestParam(value = "projectTypeId", required = false) String projectTypeId,
             @RequestParam(value = "developTools", required = false) String developTools,
             @RequestParam(value = "price", required = false) String price,
+            @RequestParam(value = "codePath", required = false) String codePath,
             @RequestBody(required = false) MultipartFile apkFile,
             @RequestParam(value = "note", required = false) String note
     ) {
 
         return getBaseService().updateProject(userId, projectId, projectName, projectSize,
-                projectTypeId, developTools, price, apkFile, note);
+                projectTypeId, developTools, price, apkFile, note, codePath);
     }
 
     @ResponseBody

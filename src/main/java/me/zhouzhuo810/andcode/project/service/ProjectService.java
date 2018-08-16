@@ -11,14 +11,14 @@ import org.springframework.web.multipart.MultipartFile;
 public interface ProjectService extends BaseService<ProjectEntity> {
 
     BaseResult addProject(String userId, String projectName, String projectSize, String projectTypeId,
-                          String developTools, String price, MultipartFile apkPath, String note);
+                          String developTools, String price, MultipartFile apkPath, String note, String codePath);
 
 
     BaseResult deleteProject(String userId, String id);
 
     BaseResult updateProject(String userId, String projectId, String projectName,
                              String projectSize, String projectTypeId, String developTools,
-                             String price, MultipartFile apkPath, String note);
+                             String price, MultipartFile apkPath, String note, String codePath);
 
     BaseResult getAllProject();
 

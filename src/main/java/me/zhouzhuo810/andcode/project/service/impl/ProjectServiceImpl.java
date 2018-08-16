@@ -50,7 +50,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
     }
 
     @Override
-    public BaseResult addProject(String userId, String projectName, String projectSize, String projectTypeId, String developTools, String price, MultipartFile apkPath, String note) {
+    public BaseResult addProject(String userId, String projectName, String projectSize, String projectTypeId, String developTools, String price, MultipartFile apkPath, String note, String codePath) {
         UserEntity user = mUserService.get(userId);
         if (user == null) {
             return new BaseResult(0, "用户不合法！");
@@ -59,6 +59,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
         entity.setProjectName(projectName);
         entity.setProjectSize(projectSize);
         entity.setProjectTypeId(projectTypeId);
+        entity.setCodePath(codePath);
         entity.setDevelopTools(developTools);
         entity.setPrice(price);
         if (apkPath != null) {
@@ -105,7 +106,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
     }
 
     @Override
-    public BaseResult updateProject(String userId, String projectId, String projectName, String projectSize, String projectTypeId, String developTools, String price, MultipartFile apkPath, String note) {
+    public BaseResult updateProject(String userId, String projectId, String projectName, String projectSize, String projectTypeId, String developTools, String price, MultipartFile apkPath, String note, String codePath) {
         UserEntity user = mUserService.get(userId);
         if (user == null) {
             return new BaseResult(0, "用户不合法！");
@@ -119,6 +120,9 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
         }
         if (projectSize != null) {
             entity.setProjectSize(projectSize);
+        }
+        if (codePath != null) {
+            entity.setCodePath(codePath);
         }
         if (projectTypeId != null) {
             entity.setProjectTypeId(projectTypeId);
@@ -163,6 +167,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
                 map.put("developTools", action.getDevelopTools());
                 map.put("projectTypeName", action.getProjectTypeName());
                 map.put("note", action.getNote());
+                map.put("codePath", action.getCodePath());
                 map.put("createTime", DataUtils.formatDate(action.getCreateTime()));
                 map.put("createPerson", action.getCreateUserName());
                 map.put("projectName", action.getProjectName());
@@ -197,6 +202,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
                     map.put("developTools", action.getDevelopTools());
                     map.put("projectTypeName", action.getProjectTypeName());
                     map.put("note", action.getNote());
+                    map.put("codePath", action.getCodePath());
                     map.put("createTime", DataUtils.formatDate(action.getCreateTime()));
                     map.put("createPerson", action.getCreateUserName());
                     map.put("projectName", action.getProjectName());
@@ -223,6 +229,7 @@ public class ProjectServiceImpl extends BaseServiceImpl<ProjectEntity> implement
                     map.put("developTools", action.getDevelopTools());
                     map.put("projectTypeName", action.getProjectTypeName());
                     map.put("note", action.getNote());
+                    map.put("codePath", action.getCodePath());
                     map.put("createTime", DataUtils.formatDate(action.getCreateTime()));
                     map.put("createPerson", action.getCreateUserName());
                     map.put("projectName", action.getProjectName());

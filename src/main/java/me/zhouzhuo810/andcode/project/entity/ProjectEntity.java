@@ -27,8 +27,18 @@ public class ProjectEntity extends BaseEntity {
     private String apkPath;
     @Column(name = "Note")
     private String note;
+    @Column(name = "CodePath")
+    private String codePath;
     @Formula("(SELECT t.TypeName FROM projectType t WHERE t.ID = projectTypeId)")
     private String projectTypeName;
+
+    public String getCodePath() {
+        return codePath;
+    }
+
+    public void setCodePath(String codePath) {
+        this.codePath = codePath;
+    }
 
     public String getProjectName() {
         return projectName;
