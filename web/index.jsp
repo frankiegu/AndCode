@@ -48,7 +48,7 @@
 <script src="js/jquery-3.2.1.js"></script> <!-- Resource jQuery -->
 <script src="js/bootstrap.min.js"></script> <!-- Resource jQuery -->
 <script src="js/main.js"></script> <!-- Resource jQuery -->
-<script src="js/index.js?t=1"></script> <!-- Resource jQuery -->
+<script src="js/index.js?t=2"></script> <!-- Resource jQuery -->
 <script type="text/javascript" src="js/baguetteBox.min.js"></script>
 </body>
 </html>
